@@ -112,7 +112,6 @@ const cargar = async () => {
 // R4 · Eventos del buscador (input), del select (change) y del formulario (Enter NO recarga).
 // TODO
 
-const buscador = document.querySelector('#buscador');
 const formBuscador = document.querySelector('form'); // o el formulario contenedor
 
 if (formBuscador) {
@@ -121,7 +120,7 @@ if (formBuscador) {
     });
 }
 
-buscador.addEventListener('input', (e) => {
+inputBusqueda.addEventListener('input', (e) => {
     filtros.texto = e.target.value;
     render();
 });
