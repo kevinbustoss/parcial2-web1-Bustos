@@ -89,6 +89,14 @@ const render = () => {
 
 };
 
+const actualizarContador = (cantVisibles, cantTotal) => {
+    const contadorEl = document.querySelector('#contador');
+    const filtrados = filtrarEpisodios(episodios, filtros);
+    const totalPersonajes = contarPersonajes(filtrados);
+    
+    contadorEl.textContent = `${cantVisibles} de ${cantTotal} episodios • ${totalPersonajes} personajes`;
+};
+
 // R2 · Pide los episodios: muestra cargando; si todo sale bien guarda y pinta;
 // si falla, muestra el error con su botón Reintentar.
 const cargar = async () => {
