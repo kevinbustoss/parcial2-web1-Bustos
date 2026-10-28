@@ -133,6 +133,22 @@ selectTemporada.addEventListener('change', (e) => {
 
 // R6 · UN solo listener en #lista (delegación) que atienda el botón de cada tarjeta
 // y también el botón Reintentar.
-// TODO
+// lista con el boton de reintentar y el boton de marcar como visto, se hace un solo listener para ambos
+lista.addEventListener('click', (e) => {
+    // 1. Si se hace clic en Reintentar
+    if (e.target && e.target.id === 'btn-reintentar') {
+        cargar();
+        return;
+    }
+
+    // 2. Si se hace clic en una tarjeta o su botón (usando closest)
+    const boton = e.target.closest('[data-id]');
+    if (boton) {
+        const idEpisodio = Number(boton.dataset.id);
+        vistos = alternarId(vistos, idEpisodio);
+        guardarVistos(vistos);
+        render();
+    }
+});
 
 cargar();
