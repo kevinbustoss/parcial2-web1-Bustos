@@ -104,6 +104,25 @@ const cargar = async () => {
 // R4 · Eventos del buscador (input), del select (change) y del formulario (Enter NO recarga).
 // TODO
 
+const buscador = document.querySelector('#buscador');
+const formBuscador = document.querySelector('form'); // o el formulario contenedor
+
+if (formBuscador) {
+    formBuscador.addEventListener('submit', (e) => {
+        e.preventDefault();
+    });
+}
+
+buscador.addEventListener('input', (e) => {
+    filtros.texto = e.target.value;
+    render();
+});
+
+selectTemporada.addEventListener('change', (e) => {
+    filtros.temporada = e.target.value;
+    render();
+});
+
 // R6 · UN solo listener en #lista (delegación) que atienda el botón de cada tarjeta
 // y también el botón Reintentar.
 // TODO
